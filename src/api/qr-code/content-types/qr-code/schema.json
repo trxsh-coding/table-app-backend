@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "qr_codes",
+  "info": {
+    "singularName": "qr-code",
+    "pluralName": "qr-codes",
+    "displayName": "QR-Code",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "src": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "gost": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::gosti.gosti",
+      "inversedBy": "qr_code"
+    },
+    "generated": {
+      "type": "boolean"
+    }
+  }
+}
