@@ -1,0 +1,7 @@
+"use strict";
+/**
+ * qr-code service
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+const strapi_1 = require("@strapi/strapi");
+exports.default = strapi_1.factories.createCoreService('api::qr-code.qr-code');

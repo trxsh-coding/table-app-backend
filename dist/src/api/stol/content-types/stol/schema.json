@@ -1,0 +1,29 @@
+{
+    "kind": "collectionType",
+    "collectionName": "stols",
+    "info": {
+        "singularName": "stol",
+        "pluralName": "stols",
+        "displayName": "Стол",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "slug": {
+            "type": "uid"
+        },
+        "gosts": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::gosti.gosti",
+            "mappedBy": "stol"
+        },
+        "number": {
+            "type": "integer",
+            "required": true,
+            "unique": true
+        }
+    }
+}

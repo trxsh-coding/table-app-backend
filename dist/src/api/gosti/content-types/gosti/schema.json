@@ -1,0 +1,39 @@
+{
+    "kind": "collectionType",
+    "collectionName": "gostis",
+    "info": {
+        "singularName": "gosti",
+        "pluralName": "gostis",
+        "displayName": "Гость",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "name": {
+            "type": "string"
+        },
+        "surname": {
+            "type": "string"
+        },
+        "slug": {
+            "type": "uid"
+        },
+        "wish": {
+            "type": "string"
+        },
+        "qr_code": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::qr-code.qr-code",
+            "mappedBy": "gost"
+        },
+        "stol": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::stol.stol",
+            "inversedBy": "gosts"
+        }
+    }
+}
