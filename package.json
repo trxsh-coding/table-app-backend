@@ -1,5 +1,5 @@
 {
-  "name": "wedding-table-app",
+  "name": "table-cms",
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
@@ -9,23 +9,23 @@
     "deploy": "strapi deploy",
     "dev": "strapi develop",
     "develop": "strapi develop",
-    "seed:example": "node ./scripts/seed.js",
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.12.6",
-    "@strapi/plugin-users-permissions": "5.12.6",
-    "@strapi/strapi": "5.12.6",
+    "@strapi/plugin-cloud": "5.12.7",
+    "@strapi/plugin-documentation": "^5.12.7",
+    "@strapi/plugin-users-permissions": "5.12.7",
+    "@strapi/strapi": "5.12.7",
+    "add": "^2.0.6",
     "better-sqlite3": "11.3.0",
-    "fs-extra": "^10.0.0",
-    "mime-types": "^2.1.27",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -38,6 +38,7 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "982e8a17-b895-4f88-a4f0-3196710474f2"
+    "uuid": "e2aeffd1-1236-47fd-840d-52f4305fc53a",
+    "installId": "0a5b1f4edd9e43859242bac52faca499985be3716c2bcd1e96266e3ebefefbec"
   }
 }

@@ -11,19 +11,14 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "slug": {
+    "number": {
       "type": "uid"
     },
     "gosts": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::gosti.gosti",
+      "target": "api::guest.guest",
       "mappedBy": "stol"
-    },
-    "number": {
-      "type": "integer",
-      "required": true,
-      "unique": true
     }
   }
 }

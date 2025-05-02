@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "guests",
+  "info": {
+    "singularName": "guest",
+    "pluralName": "guests",
+    "displayName": "Гость",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "surename": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "stol": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::stol.stol",
+      "inversedBy": "gosts"
+    }
+  }
+}

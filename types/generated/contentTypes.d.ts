@@ -369,42 +369,43 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiGostiGosti extends Struct.CollectionTypeSchema {
-  collectionName: 'gostis';
+export interface ApiGuestGuest extends Struct.CollectionTypeSchema {
+  collectionName: 'guests';
   info: {
     description: '';
     displayName: '\u0413\u043E\u0441\u0442\u044C';
-    pluralName: 'gostis';
-    singularName: 'gosti';
+    pluralName: 'guests';
+    singularName: 'guest';
   };
   options: {
     draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::gosti.gosti'> &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::guest.guest'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    qr_code: Schema.Attribute.Relation<'oneToOne', 'api::qr-code.qr-code'>;
-    slug: Schema.Attribute.UID;
     stol: Schema.Attribute.Relation<'manyToOne', 'api::stol.stol'>;
-    surname: Schema.Attribute.String;
+    surename: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    wish: Schema.Attribute.String;
   };
 }
 
 export interface ApiQrCodeQrCode extends Struct.CollectionTypeSchema {
   collectionName: 'qr_codes';
   info: {
-    description: '';
-    displayName: 'QR-Code';
+    displayName: 'QR-CODE';
     pluralName: 'qr-codes';
     singularName: 'qr-code';
   };
@@ -415,8 +416,6 @@ export interface ApiQrCodeQrCode extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    generated: Schema.Attribute.Boolean;
-    gost: Schema.Attribute.Relation<'oneToOne', 'api::gosti.gosti'>;
     image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -425,7 +424,6 @@ export interface ApiQrCodeQrCode extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    src: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -447,15 +445,12 @@ export interface ApiStolStol extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    gosts: Schema.Attribute.Relation<'oneToMany', 'api::gosti.gosti'>;
+    gosts: Schema.Attribute.Relation<'oneToMany', 'api::guest.guest'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::stol.stol'> &
       Schema.Attribute.Private;
-    number: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    number: Schema.Attribute.UID;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -971,7 +966,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::gosti.gosti': ApiGostiGosti;
+      'api::guest.guest': ApiGuestGuest;
       'api::qr-code.qr-code': ApiQrCodeQrCode;
       'api::stol.stol': ApiStolStol;
       'plugin::content-releases.release': PluginContentReleasesRelease;
